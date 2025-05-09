@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos de Pós-Graduação | Sua Instituição</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--dark);
+        }
+        
+        /* Courses Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+        
+        .curso-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .curso-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .curso-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .curso-img {
+            height: 180px;
+            background-color: #eee;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .curso-content {
+            padding: 25px;
+        }
+        
+        .curso-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .curso-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .meta-item i {
+            margin-right: 5px;
+            color: var(--secondary);
+        }
+        
+        .curso-desc {
+            color: #666;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .curso-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .curso-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* Message Generator */
+        .message-generator {
+            background-color: var(--light);
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+        
+        .generator-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .generator-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .generator-title h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .generator-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .message-preview {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 20px;
+            min-height: 150px;
+            margin-top: 20px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .copy-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+            }
+            
+            .nav-links li {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .curso-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .generator-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">Pós-Graduação</div>
+            <p class="tagline">Especialize-se e transforme sua carreira</p>
+        </div>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo-sm">Pós-Grad</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#mensagem">Gerar Mensagem</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Invista no seu futuro profissional</h1>
+            <p>Escolha entre nossos cursos de pós-graduação e dê o próximo passo na sua carreira com o conhecimento que o mercado exige.</p>
+            <a href="#cursos" class="btn">Ver Cursos</a>
+            <a href="#mensagem" class="btn btn-outline">Gerar Mensagem</a>
+        </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section id="cursos" class="container">
+        <div class="section-title">
+            <h2>Nossos Cursos</h2>
+            <p>Conheça nossa variedade de cursos de pós-graduação e encontre o ideal para sua carreira</p>
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="presencial">Presencial</button>
+            <button class="filter-btn" data-filter="ead">EAD</button>
+            <button class="filter-btn" data-filter="hibrido">Híbrido</button>
+        </div>
+        
+        <div class="curso-container">
+            <!-- Curso 1 -->
+            <div class="curso-card" data-category="presencial">
+                <div class="curso-img" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80');"></div>
+                <div class="curso-content">
+                    <h3>MBA em Gestão Empresarial</h3>
+                    <div class="curso-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 18 meses</span>
+                        <span class="meta-item"><i class="fas fa-chalkboard-teacher"></i> Presencial</span>
+                        <span class="meta-item"><i class="fas fa-calendar-alt"></i> Segundas e Quartas</span>
+                    </div>
+                    <p class="curso-desc">Desenvolva habilidades estratégicas para liderar organizações em ambientes competitivos e em constante transformação.</p>
+                    <div class="curso-footer">
+                        <div class="curso-price">R$ 890/mês</div>
+                        <a href="#" class="btn btn-sm" data-course="MBA em Gestão Empresarial">Mais Info</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 2 -->
+            <div class="curso-card" data-category="ead">
+                <div class="curso-img" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="curso-content">
+                    <h3>Marketing Digital</h3>
+                    <div class="curso-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 12 meses</span>
+                        <span class="meta-item"><i class="fas fa-laptop"></i> EAD</span>
+                        <span class="meta-item"><i class="fas fa-user-graduate"></i> Certificado</span>
+                    </div>
+                    <p class="curso-desc">Domine as principais ferramentas e estratégias do marketing digital para potencializar negócios na era digital.</p>
+                    <div class="curso-footer">
+                        <div class="curso-price">R$ 550/mês</div>
+                        <a href="#" class="btn btn-sm" data-course="Marketing Digital">Mais Info</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 3 -->
+            <div class="curso-card" data-category="hibrido">
+                <div class="curso-img" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="curso-content">
+                    <h3>Engenharia de Segurança</h3>
+                    <div class="curso-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 24 meses</span>
+                        <span class="meta-item"><i class="fas fa-blender-phone"></i> Híbrido</span>
+                        <span class="meta-item"><i class="fas fa-building"></i> Noturno</span>
+                    </div>
+                    <p class="curso-desc">Formação especializada para atuar na prevenção de acidentes e doenças do trabalho em diversos ambientes industriais.</p>
+                    <div class="curso-footer">
+                        <div class="curso-price">R$ 950/mês</div>
+                        <a href="#" class="btn btn-sm" data-course="Engenharia de Segurança">Mais Info</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 4 -->
+            <div class="curso-card" data-category="presencial">
+                <div class="curso-img" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="curso-content">
+                    <h3>Psicologia Organizacional</h3>
+                    <div class="curso-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 15 meses</span>
+                        <span class="meta-item"><i class="fas fa-chalkboard-teacher"></i> Presencial</span>
+                        <span class="meta-item"><i class="fas fa-calendar-alt"></i> Sábados</span>
+                    </div>
+                    <p class="curso-desc">Desenvolva competências para atuar na gestão de pessoas, clima organizacional e desenvolvimento de equipes.</p>
+                    <div class="curso-footer">
+                        <div class="curso-price">R$ 720/mês</div>
+                        <a href="#" class="btn btn-sm" data-course="Psicologia Organizacional">Mais Info</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 5 -->
+            <div class="curso-card" data-category="ead">
+                <div class="curso-img" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="curso-content">
+                    <h3>Data Science</h3>
+                    <div class="curso-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 14 meses</span>
+                        <span class="meta-item"><i class="fas fa-laptop"></i> EAD</span>
+                        <span class="meta-item"><i class="fas fa-certificate"></i> 400h</span>
+                    </div>
+                    <p class="curso-desc">Aprenda a extrair insights valiosos de grandes volumes de dados usando técnicas estatísticas e machine learning.</p>
+                    <div class="curso-footer">
+                        <div class="curso-price">R$ 680/mês</div>
+                        <a href="#" class="btn btn-sm" data-course="Data Science">Mais Info</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 6 -->
+            <div class="curso-card" data-category="hibrido">
+                <div class="curso-img" style="background-image: url('https://images.unsplash.com/photo-1581093057305-25adf7033da7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');"></div>
+                <div class="curso-content">
+                    <h3>Direito Digital</h3>
+                    <div class="curso-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 12 meses</span>
+                        <span class="meta-item"><i class="fas fa-blender-phone"></i> Híbrido</span>
+                        <span class="meta-item"><i class="fas fa-calendar-alt"></i> Quinzenal</span>
+                    </div>
+                    <p class="curso-desc">Especialização em legislação digital, proteção de dados e aspectos jurídicos da transformação digital.</p>
+                    <div class="curso-footer">
+                        <div class="curso-price">R$ 790/mês</div>
+                        <a href="#" class="btn btn-sm" data-course="Direito Digital">Mais Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Message Generator -->
+    <section id="mensagem" class="message-generator">
+        <div class="generator-container container">
+            <div class="generator-title">
+                <h3>Gerador de Mensagens Personalizadas</h3>
+                <p>Crie mensagens automáticas sobre nossos cursos para compartilhar com seus contatos</p>
+            </div>
+            
+            <form id="messageForm" class="generator-form">
+                <div class="form-group">
+                    <label for="curso">Selecione o Curso:</label>
+                    <select id="curso" class="form-control" required>
+                        <option value="">-- Selecione --</option>
+                        <option value="MBA em Gestão Empresarial">MBA em Gestão Empresarial</option>
+                        <option value="Marketing Digital">Marketing Digital</option>
+                        <option value="Engenharia de Segurança">Engenharia de Segurança</option>
+                        <option value="Psicologia Organizacional">Psicologia Organizacional</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Direito Digital">Direito Digital</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nome">Seu Nome:</label>
+                    <input type="text" id="nome" class="form-control" placeholder="Digite seu nome">
+                </div>
+                
+                <div class="form-group">
+                    <label for="destinatario">Destinatário:</label>
+                    <input type="text" id="destinatario" class="form-control" placeholder="Para quem é a mensagem?">
+                </div>
+                
+                <div class="form-group">
+                    <label for="objetivo">Objetivo:</label>
+                    <select id="objetivo" class="form-control">
+                        <option value="indicacao">Indicação</option>
+                        <option value="duvidas">Tirar Dúvidas</option>
+                        <option value="matricula">Informações sobre Matrícula</option>
+                        <option value="parceria">Proposta de Parceria</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="mensagem">Mensagem Personalizada:</label>
+                    <textarea id="mensagem" class="form-control" rows="3" placeholder="Adicione detalhes pessoais à mensagem (opcional)"></textarea>
+                </div>
+            </form>
+            
+            <div class="message-preview" id="messagePreview">
+                <p>Selecione um curso e preencha os campos acima para gerar sua mensagem personalizada.</p>
+            </div>
+            
+            <button id="copyBtn" class="copy-btn">Copiar Mensagem</button>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Sobre Nós</h4>
+                    <p>Oferecemos cursos de pós-graduação de excelência para profissionais que buscam se destacar no mercado de trabalho.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Links Rápidos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Página Inicial</a></li>
+                        <li><a href="#cursos">Nossos Cursos</a></li>
+                        <li><a href="#mensagem">Gerador de Mensagens</a></li>
+                        <li><a href="#">Processo Seletivo</a></li>
+                        <li><a href="#">Bolsas e Financiamentos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Rua Exemplo, 123 - Centro</p>
+                        <p><i class="fas fa-phone"></i> (11) 1234-5678</p>
+                        <p><i class="fas fa-envelope"></i> posgraduacao@instituicao.edu.br</p>
+                        <p><i class="fas fa-clock"></i> Seg-Sex: 9h às 18h</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Pós-Graduação - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Filtro de cursos
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                const courses = document.querySelectorAll('.curso-card');
+                
+                courses.forEach(course => {
+                    if (filter === 'all' || course.dataset.category === filter) {
+                        course.style.display = 'block';
+                    } else {
+                        course.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Gerador de mensagens
+        const messageForm = document.getElementById('messageForm');
+        const messagePreview = document.getElementById('messagePreview');
+        const copyBtn = document.getElementById('copyBtn');
+        
+        // Dados dos cursos
+        const cursosData = {
+            "MBA em Gestão Empresarial": {
+                duracao: "18 meses",
+                modalidade: "Presencial",
+                investimento: "R$ 890/mês",
+                horario: "Segundas e Quartas, 19h às 22h",
+                descricao: "MBA focado em desenvolver habilidades estratégicas para liderança empresarial"
+            },
+            "Marketing Digital": {
+                duracao: "12 meses",
+                modalidade: "EAD",
+                investimento: "R$ 550/mês",
+                horario: "Flexível",
+                descricao: "Curso completo sobre estratégias e ferramentas de marketing digital"
+            },
+            "Engenharia de Segurança": {
+                duracao: "24 meses",
+                modalidade: "Híbrido",
+                investimento: "R$ 950/mês",
+                horario: "Sextas (19h-22h) e Sábados (9h-12h)",
+                descricao: "Formação especializada em segurança do trabalho e prevenção de acidentes"
+            },
+            "Psicologia Organizacional": {
+                duracao: "15 meses",
+                modalidade: "Presencial",
+                investimento: "R$ 720/mês",
+                horario: "Sábados, 8h às 12h",
+                descricao: "Desenvolvimento de competências para gestão de pessoas e clima organizacional"
+            },
+            "Data Science": {
+                duracao: "14 meses",
+                modalidade: "EAD",
+                investimento: "R$ 680/mês",
+                horario: "Flexível",
+                descricao: "Formação em análise de dados, estatística e machine learning"
+            },
+            "Direito Digital": {
+                duracao: "12 meses",
+                modalidade: "Híbrido",
+                investimento: "R$ 790/mês",
+                horario: "Aulas quinzenais aos sábados",
+                descricao: "Especialização em legislação digital e proteção de dados"
+            }
+        };
+        
+        // Objetivos de mensagem
+        const objetivosText = {
+            "indicacao": "Estou entrando em contato para indicar este curso que acredito ser perfeito para você",
+            "duvidas": "Estou aqui para tirar qualquer dúvida que você possa ter sobre este curso",
+            "matricula": "Gostaria de compartilhar informações sobre o processo de matrícula deste curso",
+            "parceria": "Gostaria de discutir possibilidades de parceria relacionadas a este curso"
+        };
+        
+        // Atualizar preview da mensagem
+        function updateMessagePreview() {
+            const curso = document.getElementById('curso').value;
+            const nome = document.getElementById('nome').value || '[Seu Nome]';
+            const destinatario = document.getElementById('destinatario').value || '[Destinatário]';
+            const objetivo = document.getElementById('objetivo').value;
+            const mensagemPersonalizada = document.getElementById('mensagem').value;
+            
+            if (!curso) {
+                messagePreview.innerHTML = '<p>Selecione um curso e preencha os campos acima para gerar sua mensagem personalizada.</p>';
+                return;
+            }
+            
+            const cursoInfo = cursosData[curso];
+            const objetivoText = objetivosText[objetivo];
+            
+            let message = `
+                <p><strong>Assunto:</strong> Informações sobre o curso de ${curso}</p>
+                <p>Olá ${destinatario},</p>
+                <p>${objetivoText}. O curso de <strong>${curso}</strong> é uma excelente oportunidade para se especializar em ${cursoInfo.descricao.toLowerCase()}.</p>
+                <p><strong>Detalhes do curso:</strong></p>
+                <ul>
+                    <li><strong>Duração:</strong> ${cursoInfo.duracao}</li>
+                    <li><strong>Modalidade:</strong> ${cursoInfo.modalidade}</li>
+                    <li><strong>Horário:</strong> ${cursoInfo.horario}</li>
+                    <li><strong>Investimento:</strong> ${cursoInfo.investimento}</li>
+                </ul>
+            `;
+            
+            if (mensagemPersonalizada) {
+                message += `<p>${mensagemPersonalizada}</p>`;
+            }
+            
+            message += `
+                <p>Para mais informações, você pode visitar nosso site ou responder a esta mensagem.</p>
+                <p>Atenciosamente,<br>${nome}</p>
+                <p><em>Esta mensagem foi gerada automaticamente pelo gerador de mensagens da Pós-Graduação.</em></p>
+            `;
+            
+            messagePreview.innerHTML = message;
+        }
+        
+        // Event listeners para atualização em tempo real
+        messageForm.addEventListener('input', updateMessagePreview);
+        messageForm.addEventListener('change', updateMessagePreview);
+        
+        // Copiar mensagem
+        copyBtn.addEventListener('click', () => {
+            const range = document.createRange();
+            range.selectNode(messagePreview);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            
+            // Feedback visual
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Mensagem copiada!';
+            copyBtn.style.backgroundColor = 'var(--success)';
+            
+            setTimeout(() => {
+                copyBtn.textContent = originalText;
+                copyBtn.style.backgroundColor = 'var(--secondary)';
+            }, 2000);
+        });
+        
+        // Preencher automaticamente ao selecionar um curso dos cards
+        document.querySelectorAll('.btn-sm').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const curso = btn.dataset.course;
+                document.getElementById('curso').value = curso;
+                updateMessagePreview();
+                
+                // Scroll para o gerador de mensagens
+                document.getElementById('mensagem').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
